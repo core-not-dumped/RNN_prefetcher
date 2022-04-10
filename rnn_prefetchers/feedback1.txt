@@ -1,0 +1,16 @@
+prefetcher가 달성할 수 있는 ideal case output size 늘린다
+(node, weight 개수 대비해서 accuracy나 coverage차이)
+trade off
+
+트레이스 파일 여러개 해보기
+gap trace파일 중요
+
+하이퍼파라미터 값에 따른 accuracy비교
+하이퍼파라미터가 왜 accuracy가 달라지는지
+
+다른 논문의 idea 이해, 구현 input data
+
+scailing ??
+
+stride 로 찍어보기
+

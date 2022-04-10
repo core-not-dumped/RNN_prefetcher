@@ -1,0 +1,36 @@
+#seq_length = 5
+###epoch = 10
+#####accuracy: 3.96%
+#####accuracy except 0 and 1000: 15.3%
+###epoch = 20
+#####accuracy: 4.39%
+#####accuracy except 0 and 1000: 17.05%
+###epoch = 30
+#####accuracy: 4.51%
+#####accuracy except 0 and 1000: 17.53%
+#####46min
+
+
+#seq_length = 10
+###epoch = 10
+#####accuracy: 4.55%
+#####accuracy except 0 and 1000: 17.7%
+###epoch = 20
+#####accuracy: 6.01%
+#####accuracy except 0 and 1000: 23.3%
+#####46min
+
+
+#seq_length = 20
+###epoch = 10
+#####accuracy: 4.37%
+#####accuracy except 0 and 1000: 17.0%
+#####50min
+
+
+#seq_length = 30
+###epoch = 10
+#####accuracy: 4.00%
+#####accuracy except 0 and 1000: 15.51%
+#####55min
+

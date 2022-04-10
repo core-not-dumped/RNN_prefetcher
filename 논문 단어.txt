@@ -1,0 +1,7 @@
+adjacent 		인접한
+correlation 	상관관계
+cascaded		계단식으로 되어있는
+contribution	기여
+latency		자극과 반응 시간
+emerge		출현하다
+snoop		기웃거리다

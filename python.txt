@@ -1,0 +1,1007 @@
+1. 아무것도 없는 np array만들기 
+a = np.array([])
+
+
+
+2. 변수 지우기
+a = 3
+del(a)
+
+
+
+
+3. eval()함수
+문자열로 표현된 파이썬 식을 인수로 받아 파이썬 컴파일 코드로 변환한다.
+eval()함수는 식만을 처리할 수 있기 때문에 문을 인수로 받으면 에러가 발생한다.
+a = 1
+a = eval('a+4')
+
+
+
+
+4. exec()함수
+문자열로 표현된 문을 인수로 받아 파이썬 컴파일 코드로 변환한다.
+파이썬 인터프리터가 번역하여 실행할 수 있다.
+a = 5
+exec('a=a+4')
+
+
+
+
+5. string format
+a = 5
+print(f'{a}') ->5
+
+
+
+
+6. 파일,디렉토리 확인
+import os
+path = "C:\\Users"
+if os.path.exists(path):
+	print("That location exists!")
+	if os.path.isfile(path):
+		print("That is a file")
+	elif os.path.isdir(path):
+		print("That is a directory!")
+else:
+	print("That location doesn't exist!")
+
+
+
+
+7. output 만들때 -> 
+sparse_categorical_crossentropy -> [5,6,2...]와 같이 정수로 output을 만들어야됨
+categorical_crossentropy -> one_hot_encoding을 해줘야 한다
+
+
+
+
+8. 들어온 string에 따라 함수 실행
+commands = {
+	'build' : build_command,
+	'run' : run_command,
+	'eval' : eval_command,
+}
+
+commands[str]()
+
+
+
+
+9. argparse 사용법
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                    help='an integer for the accumulator')
+parser.add_argument('--sum', dest='accumulate', action='store_const',
+                    const=sum, default=max,
+                    help='sum the integers (default: find the max)')
+
+args = parser.parse_args()
+print(args.accumulate(args.integers))
+
+ex)
+python prog.py a b c
+usage: prog.py [-h] [--sum] N [N ...]
+prog.py: error: argument N: invalid int value: 'a'
+
+python prog.py 1 2 3 4
+4
+
+python prog.py 1 2 3 4 --sum
+10
+
+
+
+
+10. multiple assignment
+name, age, attractive = 'a', 25 , True
+a = b = c = 30
+
+
+
+
+11. string에 관련된 method
+name = "bro code"
+print(name.find("o")
+=> 2 (맨 처음 나오는 위치)
+print(name.capitalize())
+=> Bro code
+print(name.upper())
+=> BRO CODE
+print(name.lower())
+=> bro code(모두 소문자로)
+print(name.isdigit())
+=> False(숫자인지 보기)
+print(name.isalpha())
+=> False(알파벳인지 보기, 띄어쓰기 있으므로 False)
+print(name.count("o"))
+=> 2(2개 있음)
+print(name.replace("o", "a"))
+=> Bra Cade
+print(name*3)
+=> bro codebro codebro code
+
+a = 1
+str(a) -> string으로 바꿈
+
+print에는 string이 들어가야 한다.
+
+
+
+
+12. input
+name = input("What is your name?: ")
+print(name)
+
+
+
+
+13. import math
+pi 3.14
+print(round(pi))
+print(ceil(pi))
+print(math.floor(pi))
+print(abs(pi))
+print(pow(pi))
+print(math.sqrt(pi))
+
+a = 1
+b = 2
+c = 3
+print(max(a,b,c)
+=> 3
+
+
+
+
+14. slicing
+name  = "Bro Code"
+first_name = name[:3]
+last_name = name[4:]
+funky_name = name[0:8:2] => BoCd (2칸마다 1개)
+reversed_name = name[::-1] => edoC orB(거꾸로)
+
+website1 = "http://google.com"
+website2 = "http://wikipedia.com"
+slice = slice(7,-4)
+print(website1[slice]) => google
+print(website2[slice]) => wikipedia
+
+
+
+
+15. && => and, || => or (조건문에서)
+
+
+
+
+16. input 들어올때 까지 대기
+name = ""
+while len(name) == 0:
+	name = input("Enter your name: ")
+
+print("Hello "+name)
+
+
+name = None
+while not name:
+	name = input("Enter your name: ")
+
+print("Hello "+name)
+
+
+
+
+17. for
+for i in range(10):
+	print(i)
+
+for i in range(50,100+1, 2):
+	print(i)	=> 2칸씩 때서 출력
+
+for i in "Bro Code":
+	print(i)
+=>B
+r
+o
+...
+e
+
+for seconds in range(10,0,-1):
+	print(seconds)
+	time.sleeps(1) => 1초 쉬기
+
+
+
+
+18. print \n출력 안하기
+print("add", end = '')
+
+
+
+
+19. print() => print("\n")
+
+
+
+
+20. 
+pass : 실행할 코드가 없는 것으로 다음 행동을 계속해서 진행합니다.
+	1. 조건문에서 넣어줄 조건이 딱히 없을경우
+	2. class 선언할 때, 초기에 넣어줄 값이 없을 때
+continue : 바로 다음 순번의 loop를 수행합니다.
+
+
+
+
+21. list
+food = ["a", "b", "c"]
+food.append("d") => list뒤에 "d"추가
+food.remove("hotdog") => list에서 삭제
+food.pop() => 맨 뒤의 값 삭제
+food.insert(0,"cake") => 0 index에 cake넣기
+food.sort() => 정렬
+food.clear() =>모두 지우기
+
+
+
+
+22. 2D list
+drinks = ["a", "b", "c"]
+dinner = ["d", "e", "f"]
+dessert = ["g", "h"]
+
+food = [drinks, dinner, dessert]
+print(food[0][1]) => b
+
+
+
+
+23. tuple (못바꿈)
+student = ("Bro", 21, "male")
+print(student.count("Bro")) => 1
+print(student.index("male")) => 2
+
+for x in student:
+	print(x)
+
+if "Bro" in student:
+	print("Bro is here!")
+
+
+
+
+24. set(unindexed, unordered, no duplicated
+utensils = {"fork", "spoon", "knife"}
+# utensils = {"fork", "spoon", "knife", "spoon", "knife"}위의 값과 동일
+dishes = {"bowl", "plate", "cup", "knife"}
+
+#utensils.add("napkin")
+#utensils.remove("fork")
+#utensils.clear()
+utensils.update(dishes) => dishes의 값들이 추가된다.
+dinner_table = utensils.union(dishes) => 합집합이 dinner_table에 들어간다.
+print(dishes.difference(utensils)) => {'cup', 'plate', 'bowl'} => A-B
+print(utensils.intersection(dishes)) => 교집합
+
+for x in utensils:
+	print(x) => 계속 바뀌어서 출력된다.
+
+
+
+
+25. dictionary
+capitals = {'USA': 'a',
+	  'India': 'b',
+	  'China': 'c'}
+
+print(capitals['China']) => c, 없는값 넣으면 에러 발생
+print(capitals.get('Germany')) => None, 없는값 넣어도 에러 발생 x
+print(capitals.keys()) => ['USA', 'India', 'China'] key출력
+print(capitals.values()) => ['a', 'b', 'c']
+print(capitals.items()) => 위 두 값 모두 출력
+
+for key,value in capitals.items():
+	print(key, value)
+=>
+USA a
+India b
+China c
+
+capitals.update({'Germany':'Berlin'}) => update하기
+capitals.update({'USA':'Las Vegas'}) => 있는 값 update하기
+
+capitals.pop('China') => China값 빼기
+capitals.clear()
+
+
+
+
+26. if(1==1): => (괄호도 됨)
+
+
+
+
+27. function
+def hello(first_name, last_name, age):
+	print("hello "+first_name+" "+last_name)
+	print("You are "+str(age)+" years old")
+	print("Have a nice day!")
+
+hello("Bro", "Code", 21)
+
+
+
+
+28. keyword arguments
+def hello(first, middle, last):
+	print("Hello "+first+" "+middle+" "+last)
+
+hello(last="Code",middle="Dude",first="Bro")
+
+
+
+
+29. 여러 argument tuple로 받기
+deg add(*stuff): => tuple로 받아진다!
+	sum = 0
+	stuff = list(stuff)
+	stuff[0] = 0
+	for i in stuff:
+		sum+=i
+	return sum
+
+print(add(1,2,3,4,5))
+
+
+
+
+30. 여러 argument dictionary로 받기
+def hello(**kwargs):
+	print("Hello "+kwargs['first']+" "+kwargs['last'])
+
+hello(first="Bro", middel="Dude", last="Code")
+
+
+
+
+31. str.format()
+animal = "cow"
+item = "moon"
+
+print("The {} jumped over the {}".format(animal,item))
+print("The {0} jumped over the {1}".format(animal,item))
+#위의 두 변수 없어도 됨
+print("The {animal} jumped over the {animal}".format(animal="cow",item="moon"))
+
+text = "The {} jumped over the {}"
+print(text.format(animal, item))
+
+
+name = "Bro"
+print("Hello, my name is {}".format(name))
+print("Hello, my name is {:10}".format(name)) => 10칸을 잡고 name을 넣음
+print("Hello, my name is {:<10}".format(name)) => 왼쪽 정렬
+print("Hello, my name is {:>10}".format(name)) => 오른쪽 정렬
+print("Hello, my name is {:^10}".format(name)) => 가운데 정렬
+
+number = 1000
+print("The number pi is {:.3f}".format(number)) =>셋째자리까지
+print("The number is {:,}".format(number)) => ,로 1000단위로 나눔
+print("The number is {:b}".format(number)) => binary로
+print("The number is {:o}".format(number)) => 8진수로
+print("The number is {:X}".format(number)) => 16진수로
+print("The number is {:E}".format(number)) => 1.0000000E+03
+
+
+
+
+32. random
+import random
+x = random.randint(1,6) => 1이상 6이하 정수 랜덤하게 뽑기
+y = random.random() =>0하고 1사이 값 뽑기
+
+myList = ['rock', 'paper', 'scissors']
+z = random.choice(myList)
+print(z) => myList에서 아무거나 뽑음
+
+random.shuffle(cards) => 섞기
+
+
+
+
+33. try, except
+try:
+	numerator = int(input("Enter a number to divide: "))
+	denominator = int(input("Enter a number to divide by: "))
+	result = numerator / denominator
+except ZeroDivisionError as e:
+	print(e)
+	print("You can't divide by zero! idiot!")
+except ValueError as e:
+	print(e)
+	print("Enter only numbers plz")
+except Exception as e:
+	print(e)
+	print("something went wrong :(")
+else:
+	print(result)
+finally:
+	print("This will always execute")
+
+
+
+
+34. read, write file
+try:
+	with open('test.tx') as file:
+		print(file.read())
+except FileNotFoundError:
+	print("That file was not found :(")
+
+
+test = "abc"
+with opoen('test.txt', 'w') as file:
+	file.write(text)
+
+
+
+
+35. copy
+# copyfile() = copies contents of a file
+# copy() = copyfile() + permission mode + destination can be a directory
+# copy2() = copy + copies metadata (file's creation and modification times)
+
+import shutil
+shutil.copy('test.txt', 'copy.txt') #src, dst
+
+
+
+
+36. os.path.exists(path) => 파일이 있나 확인
+os.replace(source, destination) => 파일 옮기기
+
+
+
+
+37. 제거
+os.remove(path)
+os.rmdir(path)
+shutil.rmtree(path)
+
+
+
+
+38. module = a file containing python code. May contain functions, classes, etc.
+used with modular programming, which is to separate a program into parts
+messages.py를 만들고, hello(),bye()를 생성
+
+import messages
+import messages as msg
+from messages import hello
+from messages import hello, bye
+from messages import * (모두 import)
+
+help("modules") =>모듈 확인
+
+
+
+
+39. class basic
+car.py ->
+class Car:
+	wheels = 4 # class variable
+	def __init__(self,make,model,year,color):
+		self.make = make		#instance variable
+		self.model = model	#instance variable
+		self.year = year		#instance variable
+		self.color = color		#instance variable
+	def drive(self):
+		print("This "+self.model+" is driving")
+	def stop(self):
+		print("This car is stopped")
+
+a.py ->
+from car import Car
+car_1 = Car("Chevy", "Corvette", 2021, "blue")
+car_2 = Car("Ford", "Mustang", 2022, "red")
+car_1.drive() => This Corvette is driving
+car_1.stop() => This car is stopped
+
+car_1.wheels = 2
+print(car_1.wheels) => 2
+print(car_2.wheels) => 4
+Car.wheels = 2
+print(car_1.wheels) => 2
+print(car_2.wheels) => 2
+
+
+
+
+40. class method
+__init__ => 생성자
+
+__del__ => 소멸자
+
+__repr__ => 프린팅
+def __repr__(self):
+	return self.title
+b3 = bookstore.Book('나두 좀 줘', '100원', '쥐벼룩')
+print b3
+=>나두 좀 줘
+
+__add__ => 덧셈(sub도 가능)
+class Shape:
+	area = 0
+	def __add__(self. other):
+		return self.area + other.area
+
+a=shape.shape()
+a.area = 20
+b=shape.shape()
+b.area = 10
+a+b
+=> 30
+
+__cmp__ => 비교
+def __cmp__(self, other):
+	if self.area < other.area:
+		return -1
+	elif self.area == other.area:
+		return 0
+	else:
+		return 1
+
+if c>d: print('c가 더 넓어요!')
+c가 더 넓어요~
+
+
+
+
+41. 상속(inheritance)
+class Animal:
+	alive = True
+	def eat(self):
+		print("This animal is eating")
+	def sleep(self):
+		print("This animal is sleeping")
+
+class Rabbit(Animal):
+	def run(self):
+		print("This rabbit is running")
+
+rabbit = Rabbit()
+
+
+
+
+42. multi-level inheritance
+class Organism:
+	alive = True
+
+class Animal(Organism):
+	def eat(self):
+		print("This animal is eating")
+
+class Dog(Animal):
+	def bark(self):
+		print("This dog is barking")
+
+
+
+
+42(2)
+class Prey:
+	def flee(self):
+		print("This animal flees")
+
+class Predator:
+	def hunt(self):
+		print("This animal is hunting")
+
+class Rabbit(Prey):
+	pass
+
+class Hawk(Predator):
+	pass
+
+class Fish(Prey, Predator):
+	pass
+
+
+
+
+43. method override
+class Animal:
+	def eat(self):
+		print("This animal is eating")
+
+class Rabbit(Animal):
+	def eat(self):
+		print("This rabbit is eating a carrot")
+
+
+
+
+44. method chaining = calling multiple methods sequentially
+class Car:
+	def turn_on(self):
+		print("You start the engine")
+		return self
+	def drive(self):
+		print("You drive the car")
+		return self
+
+car = Car()
+car.turn_on().drive()
+=>
+You start the engine
+You drive the car
+
+
+
+
+45. super() = Function used to give access to the methods of a parent class
+class Rectangle:
+	def __init__(self, length, width):
+		self.length = length
+		self.width = width
+
+class Square(Rectangle):
+	def __init__(self, length, width):
+		super().__init__(length, width)
+
+
+
+
+46. Prevents a user from creating an object of that class
+abstract class = a class which contains one or more abstract mthods.
+abstract method = a method that has a declaration but does not have an implementation
+
+from abc import ABC, abstractmethod
+
+class Vehicle:
+	@abstractmethod
+	def go(self):
+		pass
+
+class Car(Vehicle):
+	def go(self):
+		print("You drive the car")
+
+class Motorcycle(Vehicle):
+	pass		=> error
+
+
+
+
+47. objects as arguments
+
+class Car:
+	color = None
+
+def change_color(vehicle, color):
+	vehicle.color = color
+
+car_1 = Car()
+change_color(car_1, "red")
+print(car_1.color)
+
+
+
+
+48. Duck typing = concept where the class of an object is less important than the methods/attributes
+class Duck:
+	def walk(self):
+		print("This duck is walking")
+	def talk(self):
+		print("This duck is qwuacking")
+
+class Chicken:
+	def walk(self):
+		print("This chicken is walking")
+	def talk(self):
+		print("This chicken is clucking")
+
+class Person():
+	def catch(self, duck):
+		duck.walk()
+		duck.talk()
+		print("You caught the critter!")
+
+duck = Duck()
+chicken = Chicken()
+person = Person()
+person.catch(chicken) => 오류 안뜸!
+person.catch(duck) 
+
+
+
+
+49. walrus operator (:=) 바다코끼리!
+표현식(Expression)에 이름을 부여하고 재사용할 수 있게 하는 것이다.
+
+a = [1, 2, 3, 4]
+n = len(a)
+if n > 5:
+    print(f"List is too long ({n} elements, expected <= 5)")
+
+a = [1, 2, 3, 4]
+if (n := len(a)) > 5:
+    print(f"List is too long ({n} elements, expected <= 5)")
+
+
+
+
+50. functions to variables
+def hello():
+	print("Hello")
+
+print(hello)
+hi = hello
+print(hi)
+=>
+<function hello at 0x0121D850>
+<function hello at 0x0121D850>
+
+say = print
+say("abc")
+=> abc
+
+
+
+
+51. Higher Order Function
+def loud(text):
+	return text.upper()
+
+def quiet(text):
+	return text.lower()
+
+def hello(func):
+	text = func("Hello")
+	print(text)
+
+hello(loud) => HELLO
+hello(quiet) => hello
+
+
+def divisor(x):
+	def dividend(y):
+		return y / x
+	return dividend
+
+divide = divisor(2)
+print(divide(10)) => 5.0
+
+
+
+
+52. lambda function = function written in 1 line using lambda keyword
+double = lambda x : x * 2
+multiply = lambda x, y : x * y
+add = lambda x, y, z : x + y + z
+full_name = lambda first_name, last_name: first_name + " " + last_name
+age_check = lambda age:True if age >= 18 else False
+print(double(5)) => 10
+
+
+
+
+53. sort
+students = ("Squidward", "Sandy", "Patrick", "Spongebob", "Mr.Krabs")
+
+students.sort(reverse = True) => 거꾸로 sort
+sorted_students = sorted(students, reverse = True) => sort된 값을 따로 저장
+
+students = [("Squidward", "F", 60),
+	   ("Sandy", "A", 33),
+	   ("Patrick", "D", 36),
+	   ("Spongebob", "B", 20),
+               ("Mr.Krabs", "C", 78)]
+
+students.sort() => 첫번째 index에 대해 정렬
+
+grade = lambda grades:grades[1]
+students.sort(key=grade) => 두번째 index에 대해 정렬
+sorted_students = sorted(students, key=grade) => 두번째 index에 대해 정렬하고 저장
+
+
+
+
+54. map() = applies a function to each item in an iterable(list, tuple, etc.)
+map(function, iterable)
+
+store = [("shirt", 20.00),
+           ("pants", 25.00),
+           ("jacket", 50.00),
+           ("socks", 10.00)]
+
+to_euros = lambda data: (data[0], data[1]*0.82)
+
+store_euros = list(map(to_euros, store))
+
+for i in store_euros:
+	print(i)
+
+
+
+
+55. filter() = 걸러냄
+friends = [("Rachel", 19),
+	 ("Monica", 18),
+	 ("Phoebe", 17),
+	 ("Joey", 16),
+	 ("Chandler", 21),
+	 ("Ross", 20)]
+
+age = lambda data:data[1] >= 18
+drinking_buddies = list(filter(age, friends)) => 18 이상인 것만 들어간다.
+
+
+
+
+56. reduce()
+import functools
+
+letters = ["H", "E", "L", "L", "O"]
+word = functools.reduce(lambda x, y, :x + y, letters)
+print(word) => HELLO
+
+factorial = [5,4,3,2,1]
+result = functools.reduce(lambda x, y, :x * y, factorial)
+print(result) => 120
+
+
+
+
+57. list comprehension
+list = [expression for item in iterable]
+list = [expression for item in iterable if conditional]
+list = [expression if/else for item in iterable]
+
+squares = [i * i for i in range(1,11)]
+print(squares) =>[1,4,9,... 100]
+ 
+students = [100, 90, 80, 60, 50, 40, 30, 0]
+
+passed_students = [i for i in students if i >= 60]
+=>[100, 90, 80, 70, 60]
+
+passed_students = [i if i >= 60 else "FAILED" for i in students]
+=>[100, 90, 80, 70, 60, 'FAILED', 'FAILED', 'FAILED', 'FAILED']
+
+
+
+
+58. dictionary comprehension
+dictionary = {key: expression for (key, value) in iterable}
+dictionary = {key: expression for (key, value) in iterable if conditional}
+dictionary = {key: (if/else) for (key, value) in iterable}
+
+ex)
+cities_in_F = {'New York': 32, 'Boston': 75, 'Los Angeles': 100, 'Chicago': 50}
+cities_in_C = {key: round((value-32)*(5/9)) for (key, value) in cities_in_F.items()}
+
+weather = {'New York': "snowing", 'Boston': "sunny", 'Los Angeles': "sunny", 'Chicago': "cloudy"}
+sunny_weather = {key: value for (key, value) in weather.items() if value == "sunny"}
+print(sunny_weather)
+
+cities = {'New York': 32, 'Boston': 75, 'Los Angeles': 100, 'Chicago': 50}
+desc_cities = {key: ("WARM" if value >= 40 else "COLD") for (key, value) in cities.items()}
+print(desc_cities)
+
+def check_temp(value):
+	if value >= 70:
+		return "HOT"
+	elif 69 >= value >= 40:
+		return "WARM"
+	else:
+		return "COLD"
+
+cities = {'New York': 32, 'Boston': 75, 'Los Angeles': 100, 'Chicago': 50}
+desc_cities = {key: check_temp(value) for (key, value) in cities.items()}
+print(desc_cities)
+
+
+
+
+
+59. zip 
+aggregate elements from two or more iterables
+creates a zip object with paired elements stored in tuples for each elements
+zip(*iterables)
+
+ex)
+usernames = ["Dude", "Bro", "Mister"]
+passwords = ("p@ssword", "abc123", "guest")
+login_date = ["1/1/2021", "1/2/2021", "1/3/2021"]
+
+users = zip(usernames, passwords)
+print(type(users)) -> <class 'zip'>
+
+users = list(zip(usernames, passwords)) -> dict로도 가능하다.
+print(type(users)) -> <class 'list'>
+
+users = zip(usernames, passwords, login_date) -> 2개 이상도 가능하다.
+
+
+
+
+60. __name__
+import하면 그 module이 실행되면서 __name__이 있는 곳은 그 module의 name이 들어간다.
+__name__에는 module의 name이 들어가게 된다.
+
+다른 곳에서 import하고 돌리면 else문이 실행되고
+그냥 실행시키면 if문이 실행된다.
+if __name__ == '__main__':
+	print("running this module directly")
+else:
+	print("running other module indirectly")
+
+if __name__ == '__main__'을 쓰면 module 내에서도 코드 작성이 가능하다.
+
+
+
+
+
+61. time
+import time
+print(time.ctime(0)) -> 숫자를 읽기 쉬운 string으로 바꿔서 출력해준다. 0은 처음 시간
+print(time.time()) -> 현재 시간을 float으로 출력한다.
+print(time.ctime(time.time())) -> 현재시각을 읽기 쉬운 string으로 바꿔서 출력해준다.
+
+time_object = time.localtime()
+time_object = time.gmtime() # UTC time
+print(time_object) -> struct로 tm_year=2021, tm_mon=1과 같이 저장한다.
+local_time = time.strftime(format, time_object) -> format은 %a, %A와 같은 것으로 입력, 다양하게 출력 가능하다.
+print(local_time)
+
+time_string = "20 April, 2020"
+time_object = time.strptime(time_string, "%d %B, %Y") -> time object로 저장
+
+(year, month, day, hours, minutes, secs, #day of the week, #day of the year, dst)
+time_tuple = (2020, 4, 20, 4 20, 0, 0, 0, 0)
+time_string = time.asctime(time_tuple) -> asctime대신 mktime을 넣으면 float형태로 출력
+print(time_string) -> string 형태로 출력
+
+
+
+
+62. REST API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
